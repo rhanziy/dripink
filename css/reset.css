@@ -1,0 +1,24 @@
+@charset "utf-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@1,700&display=swap');
+
+*{ margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size:15px; color:#333;
+    background:#fff;
+}
+h1,h2,h3,h4,h5,h6 { font-family: 'Noto Sans KR', sans-serif; font-weight: 400;}
+ul li { list-style: none; float: left; }
+a { display: block; text-decoration: none; outline: 0; }
+.clear { clear: both; }
+
+:root {
+    --brown : #834a2a;
+    --beige : #d3a281;
+}

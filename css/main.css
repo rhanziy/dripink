@@ -1,0 +1,191 @@
+@charset "utf-8";
+
+@keyframes bottom2top {
+    0% { transform:translateY(110%); }
+    100% {transform:translateY(0%);}
+}
+
+#gnb.on { 
+	right:0;
+}
+section.on {
+    transform: translateX(-200px);
+}
+
+.bottom2top-txt > a.bottom2top, .gnb-footer.bottom2top {
+    animation: bottom2top 0.8s ease-in 0.3s forwards;
+}
+
+/* main-header */
+.main-header { 
+    position:fixed; top:0px; left:0; width:100%; 
+    padding:20px 30px 0;
+    z-index:990;
+}
+.main-header .header-logo { 
+    float:left;
+    width:160px; height:60px;
+}
+.header-logo  > img { display:block; width:80%; }
+
+#btn-open { 
+    position:absolute; top:25px; right:30px;
+    width:40px; height:40px; 
+    border-radius: 5px;
+    background:rgba(0, 0, 0, 0.3); 
+}
+#btn-open span { 
+    position:absolute; top:50%; left:50%;
+    width:60%; height:2px;
+    transform:translate(-50%,-50%);
+    background:#fff;
+    transition:all 0.4s ease-in;
+}
+#btn-open span::before, #btn-open span::after {
+    position: absolute;
+    width:100%; height:100%;
+    background:#fff;
+    content:"";
+    transition:all 0.4s ease-in;
+}
+#btn-open span::before { top: -9px; }
+#btn-open span::after { top:10px; }
+
+/*btn-active*/
+#btn-open.x span { 
+    background:transparent;
+ }
+#btn-open.x span::before {
+    transform:translateY(10px) rotate(45deg);
+    background:#fff;
+    content:"";
+}
+#btn-open.x span::after {
+    transform:translateY(-10px) rotate(-45deg);
+    background:#fff;
+    content:"";
+}
+
+/*gnb*/
+#gnb { 
+    position:fixed; top:0; right:-400px; 
+    width:400px; height:100vh;
+    background:#fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index:10;
+    transition:all 0.8s ease-in;
+}
+#gnb nav {
+    position:absolute;
+    top:120px; left:50px;
+    width:300px; 
+}
+#gnb nav > ul > li {
+    float:none;
+    margin:50px 0; padding:10px 0;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size:22px; 
+    letter-spacing: -0.5px;
+    overflow:hidden;
+}
+#gnb nav > ul li a { 
+    float:left;
+    position:relative;
+    color:rgb(40, 81, 145);
+    transform:translateY(110%);
+}
+#gnb nav > ul li:last-child a {
+    color:#a4a4a4;
+}
+#gnb nav > ul li a .dot {
+    position:absolute; top:-2px; right:-18px;
+    width:7px; height:7px; 
+    background: var(--brown);
+    border-radius: 50%;
+    transition: all 0.2s ease-in;
+    opacity: 0;
+}
+#gnb nav > ul li a:hover .dot {
+    opacity:1;
+}
+nav .bottom2top-txt > .delay0 { animation-delay: 0.2s; }
+nav .bottom2top-txt > .delay1 { animation-delay: 0.3s; }
+nav .bottom2top-txt > .delay2 { animation-delay: 0.4s; }
+nav .bottom2top-txt > .delay3 { animation-delay: 0.5s; }
+
+
+#gnb .gnb-footer {
+    position:absolute;
+    bottom:0;
+    width:100%;
+    border-top:1px solid #a4a4a4;
+    transform:translateY(110%);
+}
+.search-box {
+    float:left;
+    margin:17px 20px 0px 20px;
+    height:30px; 
+    border-radius: 15px;
+    background:var(--brown);
+}
+.search-txt { 
+    float:left; width:0px; padding:0;
+    color:#fff; line-height:27px;
+    background:none; border:0; outline:0;
+    transition:all 0.4s ease-in;
+}
+.search-btn {
+    float:right; display:flex;  justify-content:center; align-items:center;
+    width:30px; height:30px; margin:0px;
+    color:#fff;
+    background:var(--brown);
+    border-radius:50%;
+}
+.search-box:hover  .search-txt {
+    width:160px; padding: 2px 5px 0 15px;
+}
+
+#gnb .gnb-footer ul {
+    line-height:60px; text-align:center;
+}
+#gnb .gnb-footer > ul > li {
+    height:60px;
+    font-size:22px; 
+    border-right:1px solid #a4a4a4;
+}
+#gnb .gnb-footer > ul li:first-child {
+    width:20%; 
+    border-left:1px solid #a4a4a4; 
+}
+#gnb .gnb-footer > ul li:last-child {
+    width:20%;
+    font-size: 20px;
+    border-right:none;
+}
+#gnb .gnb-footer  > ul li a {
+    margin-top:3px;
+    color:var(--beige);
+}
+#gnb .gnb-footer > ul li a:hover {
+    color:var(--brown);
+}
+
+/*section*/
+section {
+   overflow:hidden;
+   transition: transform 0.7s ease-in;
+}
+
+.section.first  h2 {
+    position:absolute;
+    top:50%; left:50%;
+    width:600px;
+    font-size:70px;
+    font-family: 'Kaushan Script', cursive;
+    /*font-family: 'Amiri', serif;
+    text-transform: uppercase;*/
+    color:rgba(255, 255, 255, 0.3);
+    letter-spacing:2px; text-align:center;
+    transform:translate(-300px,-50%);
+}
