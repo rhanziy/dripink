@@ -182,9 +182,7 @@ section {
     top:50%; left:50%;
     width:600px;
     font-size:70px;
-    font-family: 'Kaushan Script', cursive;
-    /*font-family: 'Amiri', serif;
-    text-transform: uppercase;*/
+    font-family: 'DM Sans', sans-serif;
     color:rgba(255, 255, 255, 0.3);
     letter-spacing:2px; text-align:center;
     transform:translate(-300px,-50%);
