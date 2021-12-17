@@ -13,27 +13,6 @@ $(document).ready(function(e) {
    
     });
 
-    $('.section.first').vegas({
-        slides: [
-            { 
-                src: './media/Coffee Bean.jpg',
-                video: {
-                    src: ['./media/Coffee Bean.mp4'],
-                    loop: true,
-                    mute: true
-                }
-             },
-             { 
-                src: './media/Drip Coffee.jpg', 
-                video: {
-                    src: ['./media/Drip Coffee.mp4'],
-                    loop: true,
-                    mute: true
-                }
-             }
-        ],
-        delay: 16000
-    });
 
     $('#btn-open').click(function(e){
         e.preventDefault( );
