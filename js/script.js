@@ -1,12 +1,16 @@
 
 
 $(document).ready(function(e) {
-    
+
+
     $('#fullpage').fullpage ({
         autoScrolling:true,
         scrollHorizontally:true,
-        anchors:['first','second','third','fourth'],
-        sectionsColor: ['#000','#fff', '#ffeec', '#ffeeaa']
+        parallax:true,
+        navigation:true,
+        anchors:['first','second','third','fourth','fifth'],
+        sectionsColor: ['#000','#fff', '#ffeec', '#ffeeaa','#f00']
+   
     });
 
     $('.section.first').vegas({
@@ -40,5 +44,20 @@ $(document).ready(function(e) {
         $('.gnb-footer').toggleClass('bottom2top');
     });
 
-
+    const targets = document.querySelectorAll(".fade-class");
+    const options = { root: null, threshold: 0.1, rootMargin: "-0px" };
+    const observer = new IntersectionObserver(function (entries, observer) {
+      entries.forEach((entry) => {
+        const container = entry.target;
+        if (entry.isIntersecting) {
+          container.classList.add("fade-in");
+        } else {
+          container.classList.remove("fade-in");
+        }
+      });
+    }, options);
+  
+    targets.forEach((target) => {
+      observer.observe(target);
+    });
 });
