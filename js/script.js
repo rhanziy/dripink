@@ -6,9 +6,8 @@ $(document).ready(function(e) {
       scrollHorizontally:true,
       parallax:true,
       navigation:true,
-      anchors:['first','second','third','fourth','fifth'],
-      sectionsColor: ['#fff','#fff', '#ffeec', '#ffeeaa','#f00']
-  
+      anchors:['first','second','third','fourth','fifth']
+
   });
 
 
@@ -37,5 +36,6 @@ $(document).ready(function(e) {
   targets.forEach((target) => {
     observer.observe(target);
   });
+
 
 });
