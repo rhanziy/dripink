@@ -50,16 +50,6 @@
     content:"";
 }
 
-@keyframes bottom2top {
-    0% { transform:translateY(110%); }
-    100% {transform:translateY(0%);}
-}
-
-.bottom2top-txt > a.bottom2top, .gnb-footer.bottom2top {
-    animation: bottom2top 0.8s ease-in 0.3s forwards;
-}
-
-
 /*gnb*/
 #gnb.on { right:0; }
 #gnb { 
@@ -68,7 +58,7 @@
     background:#fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     z-index:300;
-    transition:all 0.8s ease-in;
+    transition:all 0.6s ease-in;
 }
 #gnb nav {
     position:absolute;
@@ -77,7 +67,7 @@
 }
 #gnb nav > ul > li {
     float:none;
-    margin:50px 0; padding:10px 0;
+    margin:50px 0; padding-top:10px;
     font-family: 'DM Sans', sans-serif;
     font-weight: 500;
     font-size:22px; 
@@ -100,6 +90,16 @@
     opacity: 0;
 }
 #gnb nav > ul li a:hover .dot { opacity:1; }
+
+@keyframes bottom2top {
+    0% { transform:translateY(110%); }
+    100% {transform:translateY(0%);}
+}
+
+.bottom2top-txt > a.bottom2top, .gnb-footer.bottom2top {
+    animation: bottom2top 0.6s ease-in 0.3s forwards;
+}
+
 nav .bottom2top-txt > .delay0 { animation-delay: 0.2s; }
 nav .bottom2top-txt > .delay1 { animation-delay: 0.3s; }
 nav .bottom2top-txt > .delay2 { animation-delay: 0.4s; }
@@ -194,7 +194,7 @@ section.on { transform: translateX(-200px);}
     border:1.5px solid rgb(78, 78, 78);
 }
 .third, .flavor li:nth-child(1) { background:linear-gradient(128deg, #81e78d, var(--lemon));}
-.fourth, .flavor li:nth-child(2) { background:linear-gradient(128deg,#57a8e2,var(--balance)); }
+.fourth, .flavor li:nth-child(2) { background:linear-gradient(128deg,#60abe0,var(--balance)); }
 .fifth, .flavor li:nth-child(3) { background:linear-gradient(128deg,rgb(197, 155, 118),var(--sweet));}
 
 
@@ -211,8 +211,7 @@ section.on { transform: translateX(-200px);}
     background-size: cover;
 }
 .flavor li .balance{
-    background:url(../imgs/balance.jpg) no-repeat top;
-    background-size: cover;
+    background:#fff url(../imgs/balance2.png) no-repeat top;
 }
 .flavor li .sweet{
     background:url(../imgs/sweet.jpg) no-repeat top;
@@ -235,7 +234,6 @@ section.on { transform: translateX(-200px);}
 /*---flavor li:hover---*/
 .flavor li:hover { box-shadow: 3px 3px 10px rgba(50, 50, 50, 0.4) inset; }
 .flavor li:hover > div { transform: rotate(20deg);}
-
 
 @keyframes spin-circle-top {
     from {
@@ -279,3 +277,20 @@ section.on { transform: translateX(-200px);}
     font-weight:300;
 }
 
+/* section -third, fourth, fifth */
+.half {
+    position:absolute;
+    top:0;
+    width:50%; height:100%;
+    border-right:1.5px solid rgb(78, 78, 78) ;
+    opacity:0.2;
+}
+.half.left {left:0;}
+.half.right{ right:0 }
+.half.left.lemonP { background: url(../imgs/lemonpattern.png) repeat;}
+.half.right.balanceP { 
+    background: url(../imgs/balanceP.png) repeat;
+    border-right:none;
+    border-left:1.5px solid rgb(78, 78, 78) ;
+}
+.half.left.sweetP { background: url(../imgs/sweetpattern.png) repeat; }
