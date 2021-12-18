@@ -64,7 +64,7 @@
 #gnb.on { right:0; }
 #gnb { 
     position:fixed; top:0; right:-400px; 
-    width:400px; height:100vh;
+    width:400px; height:100%;
     background:#fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     z-index:300;
@@ -161,7 +161,7 @@ section {
 section.on { transform: translateX(-200px);}
 
 .first video {
-    width:100%; height:100vh;
+    width:100%; height:100%;
     object-fit: cover;
 }
 .first  h2 {

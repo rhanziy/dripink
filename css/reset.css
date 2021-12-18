@@ -27,6 +27,7 @@ a { display: block; text-decoration: none; outline: 0; }
     --lemon:rgb(101, 206, 118);
     --balance: rgb(90, 130, 210);
     --sweet:rgb(150, 110, 75);
+
 }
 
 .fade-class {
