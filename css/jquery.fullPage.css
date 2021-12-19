@@ -179,6 +179,15 @@ html.fp-enabled,
 .fp-viewing-third #fp-nav  ul  li  a  span, .fp-viewing-fourth #fp-nav  ul  li  a  span, .fp-viewing-fifth #fp-nav  ul  li  a  span{
     background-color:rgba(255, 255, 255, 0.7);
 }
+
+.fp-viewing-third .half.left, .fp-viewing-fifth .half.left {
+    left:0; opacity:0.2;
+}
+.fp-viewing-fourth .half.right {
+    right:0; opacity:0.3;
+}
+
+
 #fp-nav ul li:hover a span,
 .fp-slidesNav ul li:hover a span{
     width: 10px;

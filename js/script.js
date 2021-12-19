@@ -6,7 +6,7 @@ $(document).ready(function(e) {
       scrollHorizontally:true,
       parallax:true,
       navigation:true,
-      anchors:['first','second','third','fourth','fifth']
+      anchors:['first','second','third','fourth','fifth'],
 
   });
 
@@ -36,6 +36,5 @@ $(document).ready(function(e) {
   targets.forEach((target) => {
     observer.observe(target);
   });
-
 
 });
