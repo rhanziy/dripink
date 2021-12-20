@@ -174,7 +174,7 @@ section.on { transform: translateX(-200px);}
     color:rgba(255, 255, 255, 0.5);
     text-align:center; line-height: 100px;
     letter-spacing: 1px;
-    transform:translate(-300px,-50%);
+    transform:translate(-50%,-50%);
 }
 /*section -second */
 section, .second {
@@ -290,6 +290,7 @@ section, .second {
 .half.right{ right:-110%; }
 
 .half.left.lemonP { background: url(../imgs/lemonpattern.png) repeat;}
+
 .half.right.balanceP { 
     background: url(../imgs/balanceP.png) repeat;
     border-right:none;
@@ -317,3 +318,4 @@ section, .second {
 .pack.S{
     background-image: url(../imgs/Spack.png);
 }
+
