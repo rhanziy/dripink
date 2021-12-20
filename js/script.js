@@ -7,7 +7,7 @@ $(document).ready(function(e) {
       parallax:true,
       navigation:true,
       anchors:['first','second','third','fourth','fifth'],
-
+      css3:false
   });
 
 

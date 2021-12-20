@@ -177,7 +177,7 @@ section.on { transform: translateX(-200px);}
     transform:translate(-300px,-50%);
 }
 /*section -second */
-.second {
+section, .second {
     overflow: hidden;
 }
 .flavor {
@@ -288,6 +288,7 @@ section.on { transform: translateX(-200px);}
 }
 .half.left {left:-110%; }
 .half.right{ right:-110%; }
+
 .half.left.lemonP { background: url(../imgs/lemonpattern.png) repeat;}
 .half.right.balanceP { 
     background: url(../imgs/balanceP.png) repeat;
@@ -295,3 +296,24 @@ section.on { transform: translateX(-200px);}
     border-left:1.5px solid rgb(78, 78, 78) ;
 }
 .half.left.sweetP { background: url(../imgs/sweetpattern.png) repeat; }
+
+.pack {
+    position: absolute;
+    top:0; left:0;
+    width:100%; height:100%;
+    background-size:550px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    filter: drop-shadow(8px 30px 30px hsl(0deg 0% 0% /0.25));
+}
+
+.pack.L{
+    background-image: url(../imgs/Lpack.png);
+}
+.pack.B{
+    background-image: url(../imgs/Bpack.png);
+}
+.pack.S{
+    background-image: url(../imgs/Spack.png);
+}

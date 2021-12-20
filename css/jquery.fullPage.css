@@ -176,6 +176,7 @@ html.fp-enabled,
     -o-transition: all 0.1s ease-in-out;
     transition: all 0.1s ease-in-out;
 }
+
 .fp-viewing-third #fp-nav  ul  li  a  span, .fp-viewing-fourth #fp-nav  ul  li  a  span, .fp-viewing-fifth #fp-nav  ul  li  a  span{
     background-color:rgba(255, 255, 255, 0.7);
 }
