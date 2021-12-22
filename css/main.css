@@ -166,7 +166,7 @@ section.on { transform: translateX(-200px);}
     /* font-family: 'Kaushan Script', cursive;  */
     font-family: 'Rock Salt', cursive;
     color:rgba(255, 255, 255, 0.5);
-    text-align:center; line-height: 120px;
+    text-align:center; line-height: 130px;
     letter-spacing: 1px;
     transform:translate(-50%,-50%);
 }
@@ -188,7 +188,7 @@ section, .second {
     border:1.5px solid rgb(78, 78, 78);
 }
 .third, .flavor li:nth-child(1) { background:linear-gradient(128deg, #81e78d, var(--lemon));}
-.fourth, .flavor li:nth-child(2) { background:linear-gradient(128deg,#6b97ee,var(--balance)); }
+.fourth, .flavor li:nth-child(2) { background:linear-gradient(128deg,#6d96e9,var(--balance)); }
 .fifth, .flavor li:nth-child(3) { background:linear-gradient(128deg,rgb(197, 155, 118),var(--sweet));}
 
 
@@ -326,16 +326,20 @@ section, .second {
 .text-box p { 
     font-size:18px; color:rgba(255, 255, 255,0.8);
 }
-.text-box p > span { padding:0 15px; cursor: pointer;}
-.text-box p > span:hover {color:#8ee9c6;}
+.text-box p > span { 
+    padding:0 15px; 
+    transition:color 0.2s ease-in;
+    cursor: pointer;
+}
+.text-box p > span:hover {color:#dbfbae;}
 .text-box span:nth-child(1) { padding-left:0; }
 
 .fourth .text-box {  left:10%;}
-.fourth .text-box > h3 {color:rgb(255, 147, 237);}
-.fourth .text-box p > span:hover { color:#c2d1ff;}
+.fourth .text-box > h3 {color:rgb(255, 160, 239);}
+.fourth .text-box p > span:hover { color:#b1c1f3;}
 
 .fifth .text-box > h3 {color:rgb(86, 255, 162);}
-.fifth .text-box p > span:hover { color:#f1cf98;}
+.fifth .text-box p > span:hover { color:#eecba2;}
 .fp-viewing-third .bottom2top-txt,.fp-viewing-fourth .bottom2top-txt , .fp-viewing-fifth .bottom2top-txt {
     animation: bottom2top 1s ease-in 0.3s forwards;
 }
