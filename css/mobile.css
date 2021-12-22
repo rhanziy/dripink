@@ -1,7 +1,8 @@
 
-.first  h2 {  width:80%; font-size: 45px; }
+.first  h2 {  width:80%; font-size: 45px; line-height:80px; }
 
-.section.second { display:none; }
+#fp-nav ul li,
+.fp-slidesNav ul li {display:none;}
 
 .half {
     position:absolute;
@@ -12,9 +13,11 @@
 }
 
 .half.right.balanceP { 
-    border-top:1.5px solid rgb(78, 78, 78) ;
     border-left:none;
 }
 
-.pack {  background-size:400px;}
+.pack {  
+    background-size:330px;
+    background-position:center 23%;
+}
 
