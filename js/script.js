@@ -7,7 +7,20 @@ $(document).ready(function(e) {
       parallax:true,
       navigation:true,
       anchors:['first','second','third','fourth','fifth'],
-      css3:false
+      css3:false,
+      afterLoad: function(anchorLink, index) {
+        var indexNum = $(this).index( );
+        if (indexNum > 1 ) {
+          this.find('.bottom2top-txt').addClass('on');
+          this.find('.text-box p').addClass('on');
+        }
+      },
+      onLeave : function (index, nextIndex, direction){
+        if (index > 1 && direction == 'down' || direction == 'up'){
+          this.find('.bottom2top-txt').removeClass('on');
+          this.find('.text-box p').removeClass('on');
+        } 
+      }
   });
 
 
@@ -20,8 +33,9 @@ $(document).ready(function(e) {
       $('.gnb-footer').toggleClass('bottom2top');
   });
 
+
   const targets = document.querySelectorAll(".fade-class");
-  const options = { root: null, threshold: 0.1, rootMargin: "-0px" };
+  const options = { root: null, threshold: 0.1 };
   const observer = new IntersectionObserver(function (entries, observer) {
     entries.forEach((entry) => {
       const container = entry.target;

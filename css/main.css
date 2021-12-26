@@ -289,9 +289,9 @@ section, .second {
     position: absolute;
     top:0; left:0;
     width:100%; height:100%;
-    background-size:570px;
+    background-size:300px auto;
     background-repeat: no-repeat;
-    background-position: 49% center;
+    background-position: center;
     background-attachment: fixed;
     filter: drop-shadow(8px 30px 30px hsl(0deg 0% 0% /0.25));
 }
@@ -302,13 +302,13 @@ section, .second {
 
 .text-box {
     position:relative;
-    left:60%;
+    left:62%;
     width:550px;
 }
 .text-box h3 { 
     display:block;
     margin-bottom:15px;
-    font-size:70px; 
+    font-size:60px; 
     color:rgb(255, 247, 86);
     text-transform: uppercase;
     letter-spacing: -2px;   
@@ -321,34 +321,29 @@ section, .second {
 .text-box .text-wrap > .bottom2top-txt {
     display:block;
     transform: translateY(110%);
+    transition:transform 0.7s ease-in;
 }
-
+.text-box .text-wrap .bottom2top-txt.on {
+    transform: translateY(0%)
+}
 .text-box p { 
-    font-size:18px; color:rgba(255, 255, 255,0.8);
+    font-size:18px; color:rgba(255, 255, 255,0.5);
+    transition:opacity 0.4s ease-in;
+    opacity:0;
 }
+.text-box p.on { opacity:1;}
 .text-box p > span { 
     padding:0 15px; 
     transition:color 0.2s ease-in;
     cursor: pointer;
 }
-.text-box p > span:hover {color:#dbfbae;}
+.text-box p > span:hover {color: rgba(255, 255, 255, 1);}
 .text-box span:nth-child(1) { padding-left:0; }
 
 .fourth .text-box {  left:10%;}
 .fourth .text-box > h3 {color:rgb(255, 160, 239);}
-.fourth .text-box p > span:hover { color:#b1c1f3;}
 
-.fifth .text-box > h3 {color:rgb(86, 255, 162);}
-.fifth .text-box p > span:hover { color:#eecba2;}
-.fp-viewing-third .bottom2top-txt,.fp-viewing-fourth .bottom2top-txt , .fp-viewing-fifth .bottom2top-txt {
-    animation: bottom2top 1s ease-in 0.3s forwards;
-}
-.text-box .text-wrap > .bottom2top-txt.delay0{
-    animation-delay: 0.2s;
-}
-.text-box .text-wrap > .bottom2top-txt.delay1{
-    animation-delay: 0.5s;
-}
+.fifth .text-box > h3 {color:rgb(101, 238, 162);}
 
 @keyframes bottom2top {
     0% { transform:translateY(110%); }
@@ -370,3 +365,4 @@ section, .second {
     to {
         transform: rotate(-360deg);
     }
+}
