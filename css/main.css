@@ -295,14 +295,13 @@ section, .second {
     background-attachment: fixed;
     filter: drop-shadow(8px 30px 30px hsl(0deg 0% 0% /0.25));
 }
-
 .pack.L{ background-image: url(../imgs/Lpack.png) }
 .pack.B{ background-image: url(../imgs/Bpack.png); }
 .pack.S{ background-image: url(../imgs/Spack.png);}
 
 .text-box {
     position:relative;
-    left:62%;
+    left:65%;
     width:550px;
 }
 .text-box h3 { 

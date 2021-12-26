@@ -17,7 +17,15 @@
 }
 
 .pack {  
-    background-size:330px;
+    background-size:270px;
     background-position:center 23%;
 }
 
+.fourth .text-box {  left:50%; transform: translateX(-200px); } /*main.css 이부분을  미디어쿼리로 처리하기*/
+.text-box {
+    position:relative;
+    top:30%; left:50%;
+    width:400px;
+    text-align: center;
+    transform: translateX(-200px);
+}
