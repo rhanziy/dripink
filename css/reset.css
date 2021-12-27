@@ -28,11 +28,14 @@ a { display: block; text-decoration: none; outline: 0; }
 :root {
     --brown : #8f5635;
     --beige : #d3a281;
-    --lemon:rgb(67, 185, 87);
+    --lemon:rgb(76, 180, 94);
     --balance: #354ec0;
     --sweet:rgb(137, 92, 53);
-
+    --lemonfont:rgb(243, 236, 102);
+    --balancefont:rgb(255, 160, 239);
+    --sweetfont:rgb(92, 238, 177);
 }
+
 
 .fade-class {
     position:relative;

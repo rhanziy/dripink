@@ -31,6 +31,7 @@ $(document).ready(function(e) {
       $('section').toggleClass('on');
       $('.bottom2top-txt').find('a').toggleClass('bottom2top');
       $('.gnb-footer').toggleClass('bottom2top');
+
   });
 
 

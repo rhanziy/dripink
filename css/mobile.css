@@ -1,9 +1,98 @@
+/*gnb*/
+#gnb { right:-350px; width:350px; }
+#gnb nav > ul > li {margin:40px 0; font-size:20px;  }
+#gnb nav > ul li a .dot {
+    top:0px; right:-15px;
+    width:6px; height:6px; 
+}
+.search-box {
+    margin:13px 15px 0px 15px;
+    height:26px; 
+    border-radius: 14px;
+}
+.search-btn {
+    width:26px; height:26px; 
+    font-size:14px;
+}
+.search-box:hover .search-txt { width:130px; }
+#gnb .gnb-footer ul { line-height:50px;}
+#gnb .gnb-footer > ul > li {
+    width:20%;
+    height:50px;
+    font-size:20px; 
+}
+#gnb .gnb-footer > ul li:last-child { padding-top:-2px; font-size: 18px; }
 
-.first  h2 {  width:80%; font-size: 45px; line-height:80px; }
+/*section -first */
+.first  h2 {  width:80%; font-size: 30px; line-height:50px; }
 
 #fp-nav ul li,
 .fp-slidesNav ul li {display:none;}
 
+/*section -second */
+.flavor {
+    flex-direction: column;
+    align-items: center;
+}
+.flavor li {
+    width: 100%; height:auto;
+    box-shadow: none;
+    border:none;
+    perspective: 800px;
+}
+.flavor li:nth-child(1), .flavor li:nth-child(2), .flavor li:nth-child(3) { background:none; }
+
+.flavor li div:nth-child(1) {
+    width:160px; height:160px;
+    margin:0 auto;
+    transform-style: preserve-3d;
+    background:none;
+    border:none;
+}
+
+.flavor li  div > .circle-side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position:absolute;
+    left:0; top:0;
+    width:100%; height:100%;
+    border-radius: 50%;
+    border:1px solid rgb(78, 78, 78);
+    animation: rotate 4s linear infinite;
+}
+
+.flavor li .lemon > .circle-side.front {
+    background: rgb(211, 233, 169) url(../imgs/lemonpattern.png) repeat center;
+    background-size:40px;
+    background-blend-mode: multiply;
+}
+.flavor li .balance > .circle-side.front {
+    background:rgb(192, 206, 251) url(../imgs/balance2.png) no-repeat top;
+}
+.flavor li .sweet > .circle-side.front {
+    background:url(../imgs/sweet.jpg) no-repeat top;
+    background-size: cover;
+}
+.flavor li div > .circle-side.back { 
+     background-color:rgba(0, 0, 0, 0.4);
+    font-size: 23px;
+}
+.flavor li:nth-child(1) div > .circle-side.back { color:var(--lemonfont); }
+.flavor li:nth-child(2) div > .circle-side.back { color:var(--balancefont); }
+.flavor li:nth-child(3) div > .circle-side.back { color:var(--sweetfont); }
+
+.flavor li a  { display:none; }
+.flavor li .circle  { display:none; }
+
+.flavor li .balance .circle-side{ animation-delay: 0.2s;}
+.flavor li .sweet .circle-side{ animation-delay: 0.4s;}
+
+@keyframes rotate {
+    0% { transform:rotate3d(0,0,0,0); }
+    100% { transform:rotate3d(0,1,0,360deg); }
+}
+/* section -third, fourth, fifth */
 .half {
     position:absolute;
     top:0;
@@ -11,21 +100,56 @@
     border-right:none;
     border-bottom:1.5px solid rgb(78, 78, 78) ;
 }
-
-.half.right.balanceP { 
-    border-left:none;
-}
+.half.right.balanceP { border-left:none;}
 
 .pack {  
-    background-size:270px;
-    background-position:center 23%;
+    background-size:170px auto;
+    background-position:center 30%;
+    background-attachment: local;
 }
 
-.fourth .text-box {  left:50%; transform: translateX(-200px); } /*main.css 이부분을  미디어쿼리로 처리하기*/
+.fourth .text-box {  left:50%; transform: translateX(-200px); } 
 .text-box {
     position:relative;
-    top:30%; left:50%;
+    top:33%; left:50%;
     width:400px;
     text-align: center;
     transform: translateX(-200px);
 }
+
+.text-box h3 { font-size:36px; margin-bottom:10px;}
+.text-box p { font-size:14px; }
+
+@media screen and (max-width:399px) {
+
+    #gnb { right:-300px; width:300px; }
+    #gnb nav { width:90%;  }
+    #gnb nav > ul > li {margin:30px 0; font-size:18px;  }
+    #gnb nav > ul li a .dot {
+        top:0px; right:-15px;
+        width:6px; height:6px; 
+    }
+    .search-box {
+        margin:13px 15px 0px 15px;
+        height:26px; 
+        border-radius: 14px;
+    }
+    .search-txt { line-height:26px; }
+    .search-btn {
+        width:26px; height:26px; 
+        font-size:14px;
+    }
+    .search-box:hover .search-txt { width:130px; }
+    #gnb .gnb-footer ul { line-height:50px;}
+    #gnb .gnb-footer > ul > li {
+        width:18%;
+        height:50px;
+        font-size:18px; 
+    }
+    #gnb .gnb-footer > ul li:last-child { font-size: 16px;  }
+
+    .pack{ background-size:140px;  }
+    .flavor li .lemon, .balance, .sweet {
+        width:140px; height:140px; }
+}
+

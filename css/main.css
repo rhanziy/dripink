@@ -4,7 +4,7 @@
 .main-header { 
     position:fixed; top:0px; left:0; width:100%; 
     padding:20px 30px 0;
-    z-index:990;
+    z-index:10;
 }
 .main-header .header-logo { 
     float:left;
@@ -17,6 +17,7 @@
     width:40px; height:40px; 
     border-radius: 5px;
     background:rgba(0, 0, 0, 0.3); 
+    z-index: 990;
 }
 #btn-open span { 
     position:absolute; top:50%; left:50%;
@@ -51,13 +52,14 @@
 }
 
 /*gnb*/
+.blurbox { display:none; }
 #gnb.on { right:0; }
 #gnb { 
     position:fixed; top:0; right:-400px; 
     width:400px; height:100%;
     background:#fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    z-index:300;
+    z-index:900;
     transition:all 0.6s ease-in;
 }
 #gnb nav {
@@ -131,16 +133,15 @@ nav  .bottom2top-txt > .delay3 { animation-delay: 0.5s; }
 
 #gnb .gnb-footer ul { line-height:60px; text-align:center; }
 #gnb .gnb-footer > ul > li {
-    height:60px;
+    width:20%; height:60px;
     font-size:22px; 
     border-right:1px solid #a4a4a4;
 }
 #gnb .gnb-footer > ul li:first-child {
-    width:20%; 
     border-left:1px solid #a4a4a4; 
 }
 #gnb .gnb-footer > ul li:last-child {
-    width:20%; padding-top:1px;
+    padding-top:1px;
     font-size: 20px;
     border-right:none;
 }
@@ -163,7 +164,7 @@ section.on { transform: translateX(-200px);}
     top:50%; left:50%;
     width:750px;
     font-size:70px;
-    /* font-family: 'Kaushan Script', cursive;  */
+
     font-family: 'Rock Salt', cursive;
     color:rgba(255, 255, 255, 0.5);
     text-align:center; line-height: 130px;
@@ -191,7 +192,6 @@ section, .second {
 .fourth, .flavor li:nth-child(2) { background:linear-gradient(128deg,#6d96e9,var(--balance)); }
 .fifth, .flavor li:nth-child(3) { background:linear-gradient(128deg,rgb(197, 155, 118),var(--sweet));}
 
-
 .flavor li .lemon, .balance, .sweet {
     position:relative;
     width:200px; height:200px;
@@ -216,6 +216,7 @@ section, .second {
 .flavor li .circle {
     position:absolute;
     width:100%; height:100%;
+    border-radius: 50%;
     overflow: hidden;
 }
 .flavor li .circle::after {
@@ -227,7 +228,6 @@ section, .second {
     border-radius: 50%;
     border: 6px solid transparent;
 }
-
 
 .flavor li .circle.top::after {
     animation: spin-circle-top 5s  linear infinite;
@@ -245,11 +245,7 @@ section, .second {
     border-top-color: #fff;
     border-left-color:  #fff;
 }
-
-/*---flavor li:hover---*/
-.flavor li:hover { box-shadow: 3px 3px 10px rgba(50, 50, 50, 0.4) inset; }
-.flavor li:hover > div { transform: rotate(20deg);}
-
+.circle-side {display:none;}
 .flavor li a { color:#fff;}
 .flavor li a h3 {
     margin-top:30px;
@@ -287,7 +283,7 @@ section, .second {
 
 .pack {
     position: absolute;
-    top:0; left:0;
+    left:0; top:0; 
     width:100%; height:100%;
     background-size:300px auto;
     background-repeat: no-repeat;
@@ -308,7 +304,7 @@ section, .second {
     display:block;
     margin-bottom:15px;
     font-size:60px; 
-    color:rgb(255, 247, 86);
+    color:var(--lemonfont);
     text-transform: uppercase;
     letter-spacing: -2px;   
     overflow: hidden;
@@ -340,9 +336,15 @@ section, .second {
 .text-box span:nth-child(1) { padding-left:0; }
 
 .fourth .text-box {  left:10%;}
-.fourth .text-box > h3 {color:rgb(255, 160, 239);}
+.fourth .text-box > h3 {color:var(--balancefont);}
 
-.fifth .text-box > h3 {color:rgb(101, 238, 162);}
+.fifth .text-box > h3 {color:var(--sweetfont);}
+
+@media screen and (min-width:768px) {
+    /*---flavor li:hover---*/
+    .flavor li:hover { box-shadow: 3px 3px 10px rgba(50, 50, 50, 0.4) inset; }
+    .flavor li:hover > div { transform: rotate(20deg);}
+    }
 
 @keyframes bottom2top {
     0% { transform:translateY(110%); }

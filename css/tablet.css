@@ -1,8 +1,33 @@
+/*section -second */
+.flavor {
+    flex-direction: column;
+    align-items: center;
+}
+.flavor li {
+    width: 70%; height:150px;
+    margin:7%; padding: 0;
+    border-radius: 20px;
+}
+.flavor li .lemon, .balance, .sweet {
+    width:170px; height:170px;
+    margin:-75px;
+}
+.flavor li a h3 {
+    margin-top:10px;
+    font-size:42px;
+}
+.flavor li a p:last-child { display:none; }
 
+/* section -third, fourth, fifth */
 .pack {
     width:50%;
-    background-size:300px auto;
+    background-size:270px auto;
     background-position:15% center;
+}
+.pack.B{
+    width:50%;
+    left:initial; right:0;
+    background-position:85% center;
 }
 
 .text-box { left:60%; width:400px;}
