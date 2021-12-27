@@ -52,7 +52,6 @@
 }
 
 /*gnb*/
-.blurbox { display:none; }
 #gnb.on { right:0; }
 #gnb { 
     position:fixed; top:0; right:-400px; 
@@ -109,6 +108,24 @@ nav  .bottom2top-txt > .delay3 { animation-delay: 0.5s; }
     border-top:1px solid #a4a4a4;
     transform:translateY(110%);
 }
+
+#gnb .gnb-footer ul { line-height:60px; text-align:center; }
+#gnb .gnb-footer > ul > li {
+    width:20%; height:60px;
+    font-size:22px; 
+    border-right:1px solid #a4a4a4;
+}
+#gnb .gnb-footer > ul li:first-child {
+    border-left:1px solid #a4a4a4; 
+}
+#gnb .gnb-footer > ul li:last-child {
+    padding-top:-5px;
+    font-size: 20px;
+    border-right:none;
+}
+#gnb .gnb-footer  > ul li a { color:var(--beige);}
+#gnb .gnb-footer > ul li a:hover {  margin-top:-3px;color:var(--brown); }
+
 .search-box {
     float:left;
     margin:17px 20px 0px 20px;
@@ -131,22 +148,6 @@ nav  .bottom2top-txt > .delay3 { animation-delay: 0.5s; }
 }
 .search-box:hover .search-txt { width:160px; padding: 2px 5px 0 15px;}
 
-#gnb .gnb-footer ul { line-height:60px; text-align:center; }
-#gnb .gnb-footer > ul > li {
-    width:20%; height:60px;
-    font-size:22px; 
-    border-right:1px solid #a4a4a4;
-}
-#gnb .gnb-footer > ul li:first-child {
-    border-left:1px solid #a4a4a4; 
-}
-#gnb .gnb-footer > ul li:last-child {
-    padding-top:1px;
-    font-size: 20px;
-    border-right:none;
-}
-#gnb .gnb-footer  > ul li a { color:var(--beige);}
-#gnb .gnb-footer > ul li a:hover {  margin-top:-3px;color:var(--brown); }
 
 /*section -first */
 section {
@@ -164,7 +165,6 @@ section.on { transform: translateX(-200px);}
     top:50%; left:50%;
     width:750px;
     font-size:70px;
-
     font-family: 'Rock Salt', cursive;
     color:rgba(255, 255, 255, 0.5);
     text-align:center; line-height: 130px;
@@ -172,6 +172,7 @@ section.on { transform: translateX(-200px);}
     transform:translate(-50%,-50%);
 }
 /*section -second */
+.flavor-mobile { display:none; }
 section, .second {
     overflow: hidden;
 }
@@ -246,6 +247,7 @@ section, .second {
     border-left-color:  #fff;
 }
 .circle-side {display:none;}
+
 .flavor li a { color:#fff;}
 .flavor li a h3 {
     margin-top:30px;
