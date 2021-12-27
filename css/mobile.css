@@ -59,7 +59,7 @@
     margin:30px auto 0;
 }
 .flavor-mobile li {
-    width:175px; height:175px;
+    width:170px; height:170px;
     perspective:800px;
 }
 .circle-wrap {
@@ -82,6 +82,7 @@
 .flavor-mobile li:nth-child(3) .circle-front { color:var(--sweetfont);}
 .circle-wrap .circle-back{
     transform: rotateY(180deg);
+   -webkit-transform: rotateY(180deg);
 }
 .circle-wrap .circle-back.L {
     background: rgb(211, 233, 169) url(../imgs/lemonpattern.png) repeat center;
@@ -99,16 +100,6 @@
 .flavor-mobile li:nth-child(2) .circle-wrap{ animation-delay: 0.1s; }
 .flavor-mobile li:nth-child(3) .circle-wrap{ animation-delay: 0.2s; }
 
-@-webkit-keyframes rotate {
-    0% { -webkit-transform:rotate3d(0);  }
-    50% { -webkit-transform:rotate3d(0,1,0,180deg);   }
-    100% {  -webkit-transform:rotate3d(0,1,0,360deg); }   
-}
-@keyframes rotate {
-    0% { transform:rotate3d(0);  }
-    50% { transform:rotate3d(0,1,0,180deg);   }
-    100% {  transform:rotate3d(0,1,0,360deg); }   
-}
 /* section -third, fourth, fifth */
 .half {
     position:absolute;

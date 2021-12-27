@@ -346,11 +346,16 @@ section, .second {
     /*---flavor li:hover---*/
     .flavor li:hover { box-shadow: 3px 3px 10px rgba(50, 50, 50, 0.4) inset; }
     .flavor li:hover > div { transform: rotate(20deg);}
-    }
+    
+}
 
 @keyframes bottom2top {
     0% { transform:translateY(110%); }
     100% {transform:translateY(0%);}
+}
+@-webkit-keyframes bottom2top {
+    0% { -webkit-transform:translateY(110%); }
+    100% {-webkit-transform:translateY(0%);}
 }
 
 @keyframes spin-circle-top {
@@ -368,4 +373,15 @@ section, .second {
     to {
         transform: rotate(-360deg);
     }
+}
+
+@-webkit-keyframes rotate {
+    0% { -webkit-transform:rotate3d(0);  }
+    50% { -webkit-transform:rotate3d(0,1,0,180deg);   }
+    100% {  -webkit-transform:rotate3d(0,1,0,360deg); }   
+}
+@keyframes rotate {
+    0% { transform:rotate3d(0);  }
+    50% { transform:rotate3d(0,1,0,180deg);   }
+    100% {  transform:rotate3d(0,1,0,360deg); }   
 }
