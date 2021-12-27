@@ -100,8 +100,14 @@
 .flavor-mobile li:nth-child(3) .circle-wrap{ animation-delay: 0.2s; }
 
 @keyframes rotate {
-    0% { transform:rotate3d(0); }
-    100% { transform:rotate3d(0,1,0,360deg); }
+    0% {
+        transform:rotate3d(0); 
+        -webkit-transform:rotate3d(0);
+     }
+    100% {
+        transform:rotate3d(0,1,0,360deg); 
+        -webkit-transform:rotate3d(0,1,0,360deg); 
+    }   
 }
 /* section -third, fourth, fifth */
 .half {
@@ -114,7 +120,7 @@
 .half.right.balanceP { border-left:none;}
 
 .pack {  
-    background-size:170px auto;
+    background-size:160px auto;
     background-position:center 30%;
     background-attachment: local;
 }
@@ -162,7 +168,5 @@
     .flavor-mobile li { width:150px; height:150px;  }
     /*section -third~fifth*/
     .pack{ background-size:140px;  }
-    .flavor li .lemon, .balance, .sweet {
-        width:140px; height:140px; }
 }
 
