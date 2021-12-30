@@ -1,4 +1,8 @@
 /*section -second */
+.bean {     
+    background: url(../imgs/beanSm.png) no-repeat bottom center;
+    background-size:cover;
+}
 .flavor {
     flex-direction: column;
     align-items: center;
@@ -34,3 +38,4 @@
 .text-box h3 {  font-size:50px; }
 .text-box p {  font-size:16px; }
 .text-box p > span { padding:0 10px; }
+

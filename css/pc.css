@@ -1,0 +1,10 @@
+/*section -second */
+.flavor { width:80%; }
+.flavor li { width:270px; }
+.flavor li a h3 { font-size:40px; }
+
+/* section -third, fourth, fifth */
+.pack { background-size:250px; }
+
+.text-box {  left:65%; }
+.text-box h3 { font-size:50px; }

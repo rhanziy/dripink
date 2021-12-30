@@ -43,13 +43,14 @@
 #gnb .gnb-footer > ul li:last-child { padding-top:-2px; font-size: 18px; }
 
 /*section -first */
-.first  h2 {  width:80%; font-size: 30px; line-height:50px; }
+.first  h2 {  width:80%; font-size: 40px; line-height:70px; }
 
 #fp-nav ul li,
 .fp-slidesNav ul li {display:none;}
 
 /*section -second */
 .flavor { display:none; }
+.bean { background: none;}
 .flavor-mobile { 
     display:flex;
     justify-content: space-between;
@@ -59,7 +60,7 @@
     margin:30px auto 0;
 }
 .flavor-mobile li {
-    width:170px; height:170px;
+    width:200px; height:200px;
     perspective:800px;
 }
 .circle-wrap {
@@ -111,7 +112,7 @@
 .half.right.balanceP { border-left:none;}
 
 .pack {  
-    background-size:150px auto;
+    background-size:170px auto;
     background-position:center 30%;
     background-attachment: local;
 }
@@ -125,8 +126,8 @@
     transform: translateX(-200px);
 }
 
-.text-box h3 { font-size:36px; margin-bottom:10px;}
-.text-box p { font-size:15px; }
+.text-box h3 { font-size:42px; margin-bottom:10px;}
+.text-box p { font-size:18px; }
 .text-box p > span { padding:0 10px; }
 
 @media screen and (max-width:399px) {
