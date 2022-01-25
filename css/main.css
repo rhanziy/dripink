@@ -162,10 +162,11 @@ section.on { transform: translateX(-200px);}
     width:750px;
     font-size:60px;
     font-family: 'Rock Salt', cursive;
-    color:rgba(255, 255, 255, 0.5);
+    color:rgb(255, 255, 255);
     text-align:center; line-height: 110px;
     letter-spacing: 1px;
     transform:translate(-50%,-50%);
+    mix-blend-mode:soft-light;
 }
 /*section -second */
 .flavor-mobile { display:none; }
@@ -190,7 +191,7 @@ section, .second {
     width:90%; margin:50px auto 0;
 }
 .flavor li {
-    width: 300px; height:370px;
+    width: 270px; height:330px;
     margin:3%; padding: 0 20px;
     text-align: center;
     box-shadow: 5px 8px 10px rgba(50, 50, 50, 0.3);
@@ -202,7 +203,7 @@ section, .second {
 
 .flavor li .lemon, .balance, .sweet {
     position:relative;
-    width:200px; height:200px;
+    width: 180px; height:180px;
     margin:-100px auto 0;
     border:1.5px solid rgb(78, 78, 78);
     border-radius: 50%;
@@ -258,12 +259,12 @@ section, .second {
 .flavor li a { color:#fff;}
 .flavor li a h3 {
     margin-top:30px;
-    font-size:45px;
+    font-size:40px;
     text-transform: uppercase;
 }
-.flavor li a p { color:rgba(255, 255, 255, 0.8);}
+.flavor li a p { font-size:15px; color:rgba(255, 255, 255, 0.8);}
 .flavor li a p:last-child {
-    font-size:15px;
+    font-size:13px;
     margin-top:30px;
     font-weight:300;
 }
