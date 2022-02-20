@@ -28,7 +28,7 @@ a { display: block; text-decoration: none; outline: 0; }
 :root {
     --brown : #8f5635;
     --beige : #d3a281;
-    --lemon:rgb(76, 180, 94);
+    --lemon:rgb(65, 163, 78);
     --balance: #354ec0;
     --sweet:rgb(137, 92, 53);
     --lemonfont:rgb(243, 236, 102);
