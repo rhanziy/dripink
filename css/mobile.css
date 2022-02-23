@@ -50,9 +50,7 @@
 
 /*section -second */
 .flavor { display:none; }
-.bean {     
-    transform: rotate(180deg);
-}
+
 .flavor-mobile { 
     display:flex;
     justify-content: space-between;

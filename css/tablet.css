@@ -1,7 +1,5 @@
 /*section -second */
-.bean {     
-    transform: rotate(180deg);
-}
+
 .flavor {
     flex-direction: column;
     align-items: center;

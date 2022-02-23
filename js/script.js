@@ -1,5 +1,4 @@
 
-
 $(document).ready(function(e) {
   
   $('#fullpage').fullpage ({
@@ -34,7 +33,6 @@ $(document).ready(function(e) {
       $('.gnb-footer').toggleClass('bottom2top');
 
   });
-
 
   const targets = document.querySelectorAll(".fade-class");
   const options = { root: null, threshold: 0.1 };
