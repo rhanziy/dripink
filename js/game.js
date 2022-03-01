@@ -7,6 +7,9 @@ window.addEventListener('load', function(){
   let score = 0;
   let beans = [];
   let gameOver = false;
+  let hearts = [];
+  let getLife = false;
+  let lives = [];
 
   class InputHandler {
     constructor(){
@@ -42,17 +45,18 @@ window.addEventListener('load', function(){
       this.speed = 1;
       this.vy = 0;
       this.weight = 1;
+      this.doubleJump = 0;
     }
     draw(context){
-      context.strokeStyle = 'white';
-      context.strokeRect(this.x, this.y, this.width, this.height);
-      context.beginPath();
-      context.arc(this.x + this.width/2, this.y + this.height/2, this.width/3, 0, Math.PI * 2);
-      context.stroke();
+      // context.strokeStyle = 'white';
+      // context.strokeRect(this.x, this.y, this.width, this.height);
+      // context.beginPath();
+      // context.arc(this.x + this.width/2, this.y + this.height/2, this.width/3, 0, Math.PI * 2);
+      // context.stroke();
       context.drawImage(this.image, this.frameX * this.width, this.frameY * this.height, this.width, this.height, this.x, this.y, this.width, this.height);
     }
 
-    update(input, deltaTime, zombies){
+    update(input, deltaTime, zombies, hearts){
       // collision detection
       zombies.forEach(zombie => {
         const dx = (zombie.x + zombie.width/2) - (this.x + this.width/2);
@@ -60,6 +64,15 @@ window.addEventListener('load', function(){
         const distance = Math.sqrt(dx * dx + dy * dy);
         if(distance < zombie.width/4 + this.width/4){
           gameOver = true;
+        }
+      });
+      hearts.forEach(heart => {
+        const dx = (heart.x + heart.width/2) - (this.x + this.width/2);
+        const dy = (heart.y + heart.height/2) - (this.y + this.height/2);
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        if(distance < heart.width/4 + this.width/4){
+          heart.markedForDeletion = true;
+          getLife = true;
         }
       });
       // sprite animation
@@ -78,32 +91,38 @@ window.addEventListener('load', function(){
       } else {
         this.speed = 0;
       }
-      if(input.keys.indexOf('ArrowUp') > -1 && this.onGround()){
-        this.vy -= 20;
-      }
       // horizontal movement
       this.x += this.speed;
       if(this.x < 0) this.x = 0;
       else if (this.x > this.gameWidth - this.width) this.x = this.gameWidth - this.width;
       // vertical movement
       this.y += this.vy;
-      if(!this.onGround()){
+      if(this.onGround()){
+        this.doubleJump = true;
+        this.maxFrame = 9;
+        this.frameY = 1;
+        if(input.keys.indexOf('ArrowUp') > -1 ){
+          this.vy = -20;
+          this.doubleJump = 1;
+        }
+      } else {
         this.vy += this.weight;
         this.maxFrame = 0;
         this.frameY = 0;
-      } else {
-        this.vy = 0;
-        this.maxFrame = 9;
-        this.frameY = 1;
+        window.addEventListener('keydown', e => {
+          if(e.key === 'ArrowUp' && this.doubleJump === 1){
+            this.vy = -22;
+            this.doubleJump = 0;
+          }
+        });
       }
       if(this.y > (this.gameHeight - 40) - this.height) this.y = (this.gameHeight - 40) - this.height;
     }
-
     onGround(){
       return this.y >= (this.gameHeight - this.height) - 40;
     }
   }
-  
+
   class Background {
     constructor(gameWidth, gameHeight){
       this.gameWidth = gameWidth;
@@ -147,6 +166,34 @@ window.addEventListener('load', function(){
     } 
   }
 
+  class Life {
+    constructor(gameWidth, gameHeight){
+      this.gameWidth = gameWidth;
+      this.gameHeight = gameHeight;
+      this.image = document.getElementById("life");
+      this.width = 50;
+      this.height = 44;
+      this.viewX = 15;
+      this.viewY = 15; 
+      this.x = gameWidth;
+      this.y = gameHeight - this.height * 9;
+      this.speed = Math.floor(Math.random()*5);
+      this.markedForDeletion = false;
+    }
+    draw(context){
+      context.drawImage(this.image, this.x, this.y, this.width, this.height);
+    }
+    viewLife (context){
+      context.drawImage(this.image, this.width * + this.viewX, this.viewY, this.width, this.height);
+    }
+    update(){
+      this.x -= this.speed;
+      if(this.speed < 2) this.speed = 2
+      if(this.x < 0 - this.width) this.markedForDeletion = true;
+    } 
+  }
+
+  ///// Enemies /////
   class Zombie {
     constructor(gameWidth, gameHeight){
       this.gameWidth = gameWidth;
@@ -166,11 +213,6 @@ window.addEventListener('load', function(){
       this.markedForDeletion = false;
     }
     draw(context){
-      context.strokeStyle = 'white';
-      context.strokeRect(this.x, this.y, this.width, this.height);
-      context.beginPath();
-      context.arc(this.x + this.width/2, this.y + this.height/2, this.width/2, 0, Math.PI * 2);
-      context.stroke();
       context.drawImage(this.image, this.frameX * this.width, this.frameY * this.height, this.width, this.height, this.x, this.y, this.width, this.height);
     }
     update(deltaTime){
@@ -194,15 +236,28 @@ window.addEventListener('load', function(){
     if(beanTimer > coffeeInterval + randomEnemyInterval*5){
       beans.push(new Coffee(canvas.width, canvas.height));
       beanTimer = 0;
-      console.log(beans);
     } else {
       beanTimer += deltaTime;
     }
     beans.forEach(bean => {
       bean.draw(ctx);
-      bean.update(deltaTime);
+      bean.update();
     });
     beans = beans.filter(bean => !bean.markedForDeletion);
+  }
+  
+  function HandleLife(deltaTime){
+    if(heartTimer > heartInterval + randomEnemyInterval*5 ){
+      hearts.push(new Life(canvas.width, canvas.height));
+      heartTimer = 0;
+    } else {
+      heartTimer += deltaTime;
+    }
+    hearts.forEach(heart => {
+      heart.draw(ctx);
+      heart.update();
+    });
+    hearts = hearts.filter(heart => !heart.markedForDeletion);
   }
 
   function handleZombies(deltaTime){
@@ -238,6 +293,10 @@ window.addEventListener('load', function(){
   let beanTimer = 0;
   let coffeeInterval = 3000;
 
+  // heart
+  let heartTimer = 0;
+  let heartInterval = 10000;
+
   // enemy
   let Timer = 0;
   let lastTime = 0;
@@ -251,7 +310,8 @@ window.addEventListener('load', function(){
     background.draw(ctx);
     background.update();
     player.draw(ctx);
-    player.update(input, deltaTime, zombies);
+    player.update(input, deltaTime, zombies, hearts);
+    HandleLife(deltaTime);
     HandleCoffee(deltaTime);
     handleZombies(deltaTime);
     displayStatusText(ctx);

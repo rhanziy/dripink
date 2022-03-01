@@ -1,3 +1,5 @@
+*{ margin:0; padding:0; box-sizing: border-box; }
+
 #canvas1 {
   position:absolute;
   top:50%;
@@ -6,6 +8,7 @@
   border: 2px solid black;
 }
 
-#playerImage, #backgroundImage, #zombie, #coffee_bean {
+#playerImage, #backgroundImage, #zombie, #coffee_bean, #life {
   display: none;
 }
+
