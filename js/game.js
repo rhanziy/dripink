@@ -29,13 +29,13 @@ window.addEventListener('load', function(){
   
   class Player {
     constructor(gameWidth, gameHeight){
+      this.image = document.getElementById("playerImage");
       this.gameWidth = gameWidth;
       this.gameHeight = gameHeight;
       this.width = 150;
       this.height = 110;
       this.x = 0; 
       this.y = (this.gameHeight - 40) - this.height;
-      this.image = document.getElementById("playerImage");
       this.frameX = 0;
       this.maxFrame = 9;
       this.fps = 20;
@@ -56,7 +56,7 @@ window.addEventListener('load', function(){
       context.drawImage(this.image, this.frameX * this.width, this.frameY * this.height, this.width, this.height, this.x, this.y, this.width, this.height);
     }
 
-    update(input, deltaTime, zombies, hearts){
+    update(input, deltaTime, zombies, hearts, beans){
       // collision detection
       zombies.forEach(zombie => {
         const dx = (zombie.x + zombie.width/2) - (this.x + this.width/2);
@@ -73,6 +73,14 @@ window.addEventListener('load', function(){
         if(distance < heart.width/4 + this.width/4){
           heart.markedForDeletion = true;
           getLife = true;
+        }
+      });
+      beans.forEach(bean => {
+        const dx = (bean.x + bean.width/2) - (this.x + this.width/2);
+        const dy = (bean.y + bean.height/2) - (this.y + this.height/2);
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        if(distance < bean.width/4 + this.width/4){
+          bean.markedForDeletion = true;
         }
       });
       // sprite animation
@@ -125,9 +133,9 @@ window.addEventListener('load', function(){
 
   class Background {
     constructor(gameWidth, gameHeight){
+      this.image = document.getElementById("backgroundImage");
       this.gameWidth = gameWidth;
       this.gameHeight = gameHeight;
-      this.image = document.getElementById("backgroundImage");
       this.x = 0;
       this.y = 0;
       this.width = 2074;
@@ -146,9 +154,9 @@ window.addEventListener('load', function(){
 
   class Coffee {
     constructor(gameWidth, gameHeight){
+      this.image = document.getElementById("coffee_bean");
       this.gameWidth = gameWidth;
       this.gameHeight = gameHeight;
-      this.image = document.getElementById("coffee_bean");
       this.width = 45;
       this.height = 45;
       this.x = gameWidth;
@@ -168,9 +176,9 @@ window.addEventListener('load', function(){
 
   class Life {
     constructor(gameWidth, gameHeight){
+      this.image = document.getElementById("life");
       this.gameWidth = gameWidth;
       this.gameHeight = gameHeight;
-      this.image = document.getElementById("life");
       this.width = 50;
       this.height = 44;
       this.viewX = 15;
@@ -196,11 +204,11 @@ window.addEventListener('load', function(){
   ///// Enemies /////
   class Zombie {
     constructor(gameWidth, gameHeight){
+      this.image = document.getElementById("zombie");
       this.gameWidth = gameWidth;
       this.gameHeight = gameHeight;
       this.width = 93;
       this.height = 110;
-      this.image = document.getElementById("zombie");
       this.x = this.gameWidth;
       this.y = (this.gameHeight - this.height) - 30;
       this.frameX = 0;
@@ -247,7 +255,7 @@ window.addEventListener('load', function(){
   }
   
   function HandleLife(deltaTime){
-    if(heartTimer > heartInterval + randomEnemyInterval*5 ){
+    if(heartTimer > heartInterval ){
       hearts.push(new Life(canvas.width, canvas.height));
       heartTimer = 0;
     } else {
@@ -295,7 +303,7 @@ window.addEventListener('load', function(){
 
   // heart
   let heartTimer = 0;
-  let heartInterval = 10000;
+  let heartInterval = 15000;
 
   // enemy
   let Timer = 0;
@@ -310,7 +318,7 @@ window.addEventListener('load', function(){
     background.draw(ctx);
     background.update();
     player.draw(ctx);
-    player.update(input, deltaTime, zombies, hearts);
+    player.update(input, deltaTime, zombies, hearts, beans);
     HandleLife(deltaTime);
     HandleCoffee(deltaTime);
     handleZombies(deltaTime);
