@@ -8,7 +8,7 @@
   border: 2px solid black;
 }
 
-#playerImage, #backgroundImage, #zombie, #coffee_bean, #life {
+#playerImage, #backgroundImage, #zombie, #coffee_bean, #life, #gameOver {
   display: none;
 }
 

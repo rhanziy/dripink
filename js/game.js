@@ -4,12 +4,11 @@ window.addEventListener('load', function(){
   canvas.width = 1000;
   canvas.height = 700;
   let zombies = [];
-  let score = 0;
   let beans = [];
   let gameOver = false;
   let hearts = [];
-  let getLife = false;
-  let lives = [];
+  let beanCount = 0;
+  let Ending = false;
 
   class InputHandler {
     constructor(){
@@ -46,6 +45,7 @@ window.addEventListener('load', function(){
       this.vy = 0;
       this.weight = 1;
       this.doubleJump = 0;
+      this.hp = 50;
     }
     draw(context){
       // context.strokeStyle = 'white';
@@ -54,6 +54,10 @@ window.addEventListener('load', function(){
       // context.arc(this.x + this.width/2, this.y + this.height/2, this.width/3, 0, Math.PI * 2);
       // context.stroke();
       context.drawImage(this.image, this.frameX * this.width, this.frameY * this.height, this.width, this.height, this.x, this.y, this.width, this.height);
+      context.fillStyle = "black";
+      context.fillRect(90, 30, this.hp+2, 12);
+      context.fillStyle = "tomato";
+      context.fillRect(90, 30, this.hp, 10);
     }
 
     update(input, deltaTime, zombies, hearts, beans){
@@ -62,25 +66,29 @@ window.addEventListener('load', function(){
         const dx = (zombie.x + zombie.width/2) - (this.x + this.width/2);
         const dy = (zombie.y + zombie.height/2) - (this.y + this.height/2);
         const distance = Math.sqrt(dx * dx + dy * dy);
-        if(distance < zombie.width/4 + this.width/4){
-          gameOver = true;
+        if(distance <= zombie.width/4 + this.width/4){
+          this.hp--;
+          if(this.hp === 0){
+            gameOver = true;
+          }
         }
       });
       hearts.forEach(heart => {
         const dx = (heart.x + heart.width/2) - (this.x + this.width/2);
         const dy = (heart.y + heart.height/2) - (this.y + this.height/2);
         const distance = Math.sqrt(dx * dx + dy * dy);
-        if(distance < heart.width/4 + this.width/4){
+        if(distance <= heart.width/4 + this.width/4){
           heart.markedForDeletion = true;
-          getLife = true;
+          this.hp += 10;
         }
       });
       beans.forEach(bean => {
         const dx = (bean.x + bean.width/2) - (this.x + this.width/2);
         const dy = (bean.y + bean.height/2) - (this.y + this.height/2);
         const distance = Math.sqrt(dx * dx + dy * dy);
-        if(distance < bean.width/4 + this.width/4){
+        if(distance <= bean.width/4 + this.width/4){
           bean.markedForDeletion = true;
+          beanCount++;
         }
       });
       // sprite animation
@@ -161,11 +169,16 @@ window.addEventListener('load', function(){
       this.height = 45;
       this.x = gameWidth;
       this.y = gameHeight - this.height * 9;
+      this.posX = gameWidth-210;
+      this.posY = 15;
       this.speed = Math.floor(Math.random()*3);
       this.markedForDeletion = false;
     }
     draw(context){
       context.drawImage(this.image, this.x, this.y, this.width, this.height);
+    }
+    view(context){
+      context.drawImage(this.image, this.posX, this.posY, this.width, this.height);
     }
     update(){
       this.x -= this.speed;
@@ -181,18 +194,18 @@ window.addEventListener('load', function(){
       this.gameHeight = gameHeight;
       this.width = 50;
       this.height = 44;
-      this.viewX = 15;
-      this.viewY = 15; 
       this.x = gameWidth;
       this.y = gameHeight - this.height * 9;
+      this.posX = 20;
+      this.posY = 15;
       this.speed = Math.floor(Math.random()*5);
       this.markedForDeletion = false;
     }
     draw(context){
       context.drawImage(this.image, this.x, this.y, this.width, this.height);
     }
-    viewLife (context){
-      context.drawImage(this.image, this.width * + this.viewX, this.viewY, this.width, this.height);
+    view(context){
+      context.drawImage(this.image, this.posX, this.posY, this.width, this.height);    
     }
     update(){
       this.x -= this.speed;
@@ -235,7 +248,6 @@ window.addEventListener('load', function(){
       if(this.speed < 2) this.speed = 3;
       if(this.x < 0 - this.width) {
         this.markedForDeletion = true;
-        score += 100;
       }
     }
   }
@@ -255,7 +267,7 @@ window.addEventListener('load', function(){
   }
   
   function HandleLife(deltaTime){
-    if(heartTimer > heartInterval ){
+    if(heartTimer > heartInterval){
       hearts.push(new Life(canvas.width, canvas.height));
       heartTimer = 0;
     } else {
@@ -265,7 +277,7 @@ window.addEventListener('load', function(){
       heart.draw(ctx);
       heart.update();
     });
-    hearts = hearts.filter(heart => !heart.markedForDeletion);
+    hearts = hearts.filter(heart => !heart.markedForDeletion);  
   }
 
   function handleZombies(deltaTime){
@@ -282,20 +294,23 @@ window.addEventListener('load', function(){
     zombies = zombies.filter(zombie => !zombie.markedForDeletion);
   }
 
-  function displayStatusText(context){
-    context.fillStyle = 'black';
-    context.font = '40px Helvetica';
-    context.fillText('Score: '+ score, 20, 50);
+  function displayStatus(context){
+    const img = document.getElementById("gameOver");
+    context.font = '40px Helvetica'
     if(gameOver){
-      context.textAlign = 'center';
+      context.drawImage(img, (canvas.width/2)-200, (canvas.height/2)-60, 400, 127);
+    }
+    if(beanCount < 11){
       context.fillStyle = 'black';
-      context.fillText('GAME OVER, TRY AGAIN!', canvas.width/2, canvas.height/2);
+      context.fillText(beanCount + "  / 10", canvas.width-140, 55);
     }
   }
 
   const input = new InputHandler();
   const player = new Player(canvas.width, canvas.height);
   const background = new Background(canvas.Width, canvas.Height);
+  const coffee = new Coffee(canvas.width, canvas.height);
+  const life = new Life(canvas.width, canvas.height);
 
   // coffee
   let beanTimer = 0;
@@ -311,6 +326,7 @@ window.addEventListener('load', function(){
   let enemyInterval = 1500;
   let randomEnemyInterval = Math.random() * 1000 + 500;
 
+
   function animate(timeStamp){
     const deltaTime = timeStamp - lastTime;
     lastTime = timeStamp;
@@ -319,10 +335,12 @@ window.addEventListener('load', function(){
     background.update();
     player.draw(ctx);
     player.update(input, deltaTime, zombies, hearts, beans);
+    coffee.view(ctx);
+    life.view(ctx);
     HandleLife(deltaTime);
     HandleCoffee(deltaTime);
     handleZombies(deltaTime);
-    displayStatusText(ctx);
+    displayStatus(ctx);
     if(!gameOver) requestAnimationFrame(animate);
   }
   animate(0);
