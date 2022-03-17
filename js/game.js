@@ -8,7 +8,6 @@ window.addEventListener('load', function(){
   let gameOver = false;
   let hearts = [];
   let beanCount = 0;
-  let Ending = false;
 
   class InputHandler {
     constructor(){
@@ -45,7 +44,7 @@ window.addEventListener('load', function(){
       this.vy = 0;
       this.weight = 1;
       this.doubleJump = 0;
-      this.hp = 50;
+      this.hp = 30;
     }
     draw(context){
       // context.strokeStyle = 'white';
