@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+
 *{ margin:0; padding:0; box-sizing: border-box; }
 
 #canvas1 {
@@ -8,7 +11,38 @@
   border: 2px solid black;
 }
 
-#playerImage, #backgroundImage, #zombie, #coffee_bean, #life, #gameOver {
+#mainImg, #keyBoard, #playerImage, #backgroundImage, #zombie, #coffee_bean, #life, #gameOver {
   display: none;
 }
 
+
+#title {
+  position:absolute; left:50%; top:50%;
+  width:1000px;
+  height:350px;
+  transform: translate(-50%);
+  text-align: center;
+  opacity: 0;
+  animation: blink 0.5s linear infinite;
+}
+h1 {
+  display: block;
+  margin:230px 0;
+  color:white;
+  font-family: 'Press Start 2P', cursive;;
+  font-size:20px;
+  word-spacing: -5px;
+  filter: drop-shadow(3px 3px 0 black);
+}
+h1.hidden {
+  display: none;
+}
+
+h1 span { 
+  color:rgb(255, 238, 0); 
+  font-size:25px; text-transform: uppercase; 
+}
+
+@keyframes blink {
+  to { opacity: 1;}
+}
