@@ -1,7 +1,9 @@
 window.addEventListener('load', function(){
   const canvas = document.getElementById('canvas1');
   const ctx = canvas.getContext('2d');
-  const h1 = document.querySelector('h1');
+  const main = document.querySelector("#main");
+  const start = document.querySelector('#start');
+  const reStart = document.querySelector('#restart');
   canvas.width = 1000;
   canvas.height = 700;
   let zombies = [];
@@ -10,34 +12,6 @@ window.addEventListener('load', function(){
   let gameOver = false;
   let mainHandle = true;
 
-
-  class Main {
-    constructor(gameWidth, gameHeight){
-      this.image = document.getElementById("mainImg");
-      this.keyImage = document.getElementById("keyBoard");
-      this.gameWidth = gameWidth;
-      this.gameHeight = gameHeight;
-      this.width = 400;
-      this.height = 380;
-      this.keyWidth = 170;
-      this.keyHeight = 114;
-      this.x = (gameWidth-this.width)-320;
-      this.y = (gameHeight-this.height)-this.height/2;
-      this.y1 = 0-this.height;
-      this.speed = 5;
-    }
-    draw(context){
-      context.fillStyle = "#383432";
-      context.fillRect(0, 0, this.gameWidth, this.gameHeight);
-      context.drawImage(this.image, this.x, this.y1, this.width, this.height);
-      context.drawImage(this.keyImage, this.gameWidth-280, this.gameHeight-300, this.keyWidth, this.keyHeight);
-    }
-    update(){
-      this.y1 += this.speed; 
-      if(this.y1 === this.y) this.speed = 0;
-    }
-  }
-  
 
   class InputHandler {
     constructor(){
@@ -337,12 +311,12 @@ window.addEventListener('load', function(){
   function displayStatus(context){
     const img = document.getElementById("gameOver");
     if(gameOver){
-      context.drawImage(img, (canvas.width/2)-200, (canvas.height/2)-60, 400, 127);
+      context.drawImage(img, (canvas.width/2)-205, (canvas.height/2)-100, 400, 127);
+      reStart.classList.remove('hidden');
     } 
     
   }
 
-  const main = new Main(canvas.width, canvas.height);
   const input = new InputHandler();
   const player = new Player(canvas.width, canvas.height);
   const background = new Background(canvas.Width, canvas.Height);
@@ -355,19 +329,13 @@ window.addEventListener('load', function(){
 
   // heart
   let heartTimer = 0;
-  let heartInterval = 15000;
+  let heartInterval = 20000;
 
   // enemy
   let Timer = 0;
   let lastTime = 0;
   let enemyInterval = 1500;
   let randomEnemyInterval = Math.random() * 1000 + 500;
-
-  function mainView(){
-    main.draw(ctx);
-    main.update();
-    if(mainHandle) requestAnimationFrame(mainView);
-  }
 
   function animate(timeStamp){
     const deltaTime = timeStamp - lastTime;
@@ -383,17 +351,25 @@ window.addEventListener('load', function(){
     HandleCoffee(deltaTime);
     handleZombies(deltaTime);
     displayStatus(ctx);
-    if(!gameOver) requestAnimationFrame(animate);
+    if(!gameOver) { 
+      requestAnimationFrame(animate);
+      reStart.classList.add('hidden');
+    } 
   }
 
-  mainView();
 
   window.addEventListener('keydown', function(e){
     if(e.code === 'Space' && mainHandle){
       mainHandle = false;
+      animate(0);
+      start.classList.add('hidden');
+      main.classList.add('hidden');
+    } else if(e.key === 'r' && gameOver){
       gameOver = false;
       animate(0);
-      h1.classList.add('hidden');
+      player.hp = 30;
+      player.caffeine = 0;
+      reStart.classList.add('hidden');
     }
   })
 });
