@@ -5,7 +5,7 @@
 
 <br>
 
-##### ✔ 사용자들의 키보드 입력 값을 EventListner로 불러와 방향키로 조작하는 간단한 게임 구현
+##### ✔ 사용자들의 키보드 입력 값을 EventListner로 불러와 방향키로 조작하는 간단한 게임 제작
 ##### ✔ requestAnimationFrame 함수를 사용해 프레임 별 sprite 애니메이션 동작 구현
 ##### ✔ math.random함수를 사용해 enemy의 속도를 랜덤으로 설정
 
